@@ -1,0 +1,14 @@
+html {
+    min-height: 100%;
+}
+html, body, #root {
+    margin: 0;
+    font-family: InterRegular;
+    display: flex;
+    flex: 1;
+}
+
+@font-face {
+    font-family: 'InterRegular';
+    src: local('InterRegular'), url(/src/assets/fonts/Inter-Regular.otf) format('opentype');
+}
