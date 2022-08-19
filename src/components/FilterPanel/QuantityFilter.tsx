@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Box, IconButton, Typography } from '@mui/material';
-import PropTypes from "prop-types";
 
 interface Props {
     label: string;

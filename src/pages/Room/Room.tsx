@@ -19,7 +19,7 @@ const Room = () => {
         if (isSuccess && data && data.rooms) {
             setRoom(data.rooms.find((i) => i.id === roomId));
         }
-    }, [data, isSuccess]);
+    }, [data, isSuccess, roomId]);
 
     return (
         <Box sx={{ display: 'flex', flex: 1, flexDirection: 'column' }}>

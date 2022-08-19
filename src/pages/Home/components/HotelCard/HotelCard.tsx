@@ -24,7 +24,7 @@ const HotelCard = () => {
         if (data && data.rooms) {
             dispatch(setHotelRooms({ hotelId: id, rooms: data.rooms || [] }));
         }
-    }, [data, rooms]);
+    }, [data, rooms, id]);
 
     return (
         <Paper
