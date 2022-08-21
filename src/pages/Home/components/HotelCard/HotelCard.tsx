@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Paper, Typography } from '@mui/material';
 import { useGetRoomsQuery } from 'app/api/apiSlice';
 import { useAppDispatch } from 'app/store';
+import ErrorMessage from 'components/ErrorMessage';
 import ItemHeader from 'components/ItemHeader';
 import Loader from 'components/Loader';
 import HotelContext from 'pages/Home/context/HotelContext';
@@ -16,7 +17,7 @@ const HotelCard = () => {
         hotel: { id, name, description, images, starRating },
         rooms,
     } = useContext<HotelWithRooms>(HotelContext);
-    const { data, isFetching, isSuccess } = useGetRoomsQuery({
+    const { data, isFetching, isSuccess, isError } = useGetRoomsQuery({
         hotelId: id,
     });
 
@@ -47,6 +48,7 @@ const HotelCard = () => {
                 {description}
             </Typography>
             {isFetching && <Loader />}
+            {isError && <ErrorMessage label="Fetching rooms failed" />}
             {isSuccess && rooms && <RoomsList hotelId={id} rooms={rooms} />}
         </Paper>
     );

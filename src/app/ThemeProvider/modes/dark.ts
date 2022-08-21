@@ -3,6 +3,7 @@ import { ThemeType } from './ThemeType';
 const darkTheme: ThemeType = {
     text: {
         primary: '#FFFFFF',
+        disabled: 'rgba(255, 255, 255, 0.3)',
     },
     background: {
         primary: '#121212',
@@ -12,6 +13,9 @@ const darkTheme: ThemeType = {
         main: '#009fe3',
         secondary: '#1f1c4d',
         contrastText: '#FFFFFF',
+    },
+    warning: {
+        main: '#DA6757',
     },
 };
 

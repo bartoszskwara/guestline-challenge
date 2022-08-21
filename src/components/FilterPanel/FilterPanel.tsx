@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Paper, Rating } from '@mui/material';
 import { useAppDispatch, useAppSelector } from 'app/store';
 import {
@@ -7,7 +8,11 @@ import {
 } from 'components/FilterPanel/filterSlice';
 import QuantityFilter from 'components/FilterPanel/QuantityFilter';
 
-const FilterPanel = () => {
+interface Props {
+    disabled?: boolean;
+}
+
+const FilterPanel = ({ disabled }: Props) => {
     const dispatch = useAppDispatch();
     const { rating, adults, children } = useAppSelector(({ filter }) => filter);
 
@@ -30,6 +35,7 @@ const FilterPanel = () => {
                 sx={{
                     marginX: (theme) => theme.spacing(2),
                 }}
+                disabled={disabled}
             />
             <QuantityFilter
                 label="Adults:"
@@ -40,6 +46,7 @@ const FilterPanel = () => {
                 decrement={() =>
                     dispatch(decrementFilter({ filterName: 'adults' }))
                 }
+                disabled={disabled}
             />
             <QuantityFilter
                 label="Children:"
@@ -50,9 +57,14 @@ const FilterPanel = () => {
                 decrement={() =>
                     dispatch(decrementFilter({ filterName: 'children' }))
                 }
+                disabled={disabled}
             />
         </Paper>
     );
+};
+
+FilterPanel.propTypes = {
+    disabled: PropTypes.bool,
 };
 
 export default FilterPanel;

@@ -8,14 +8,22 @@ interface Props {
     value: number;
     increment: () => void;
     decrement: () => void;
+    disabled?: boolean;
 }
 
-const QuantityFilter = ({ label, value, increment, decrement }: Props) => (
+const QuantityFilter = ({
+    label,
+    value,
+    increment,
+    decrement,
+    disabled,
+}: Props) => (
     <Box
         sx={{
             display: 'flex',
             alignItems: 'center',
             marginX: (theme) => theme.spacing(2),
+            ...(disabled && { color: (theme) => theme.palette.text.disabled }),
         }}
     >
         <Typography variant="regular">{label}</Typography>
@@ -24,6 +32,7 @@ const QuantityFilter = ({ label, value, increment, decrement }: Props) => (
             onClick={decrement}
             size="small"
             sx={{ marginX: (theme) => theme.spacing(0.5) }}
+            disabled={disabled}
         >
             <RemoveIcon fontSize="small" />
         </IconButton>
@@ -33,6 +42,7 @@ const QuantityFilter = ({ label, value, increment, decrement }: Props) => (
             onClick={increment}
             size="small"
             sx={{ marginX: (theme) => theme.spacing(0.5) }}
+            disabled={disabled}
         >
             <AddIcon fontSize="small" />
         </IconButton>
@@ -44,6 +54,7 @@ QuantityFilter.propTypes = {
     value: PropTypes.number.isRequired,
     increment: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
 };
 
 export default QuantityFilter;
